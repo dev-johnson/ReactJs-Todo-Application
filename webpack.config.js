@@ -1,0 +1,21 @@
+var path = require('path');
+
+module.exports = {
+  entry: './client.js',
+  output: {
+    path: path.resolve(__dirname,'../'),
+    filename: 'transpiled.js'
+  },
+  module:{
+    loaders: [
+      {
+        test: /\.js$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/,
+        query: {
+          presets: ['es2015', 'react']
+        }
+      }
+    ]
+  }
+}

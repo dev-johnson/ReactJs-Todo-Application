@@ -1,0 +1,38 @@
+{
+  "name": "react-todo-application",
+  "version": "1.0.0",
+  "description": "A simple todo application with the basics of react, babel, webpack.",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --hot",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ReactJS",
+    "Html",
+    "Css",
+    "Bootstrap",
+    "Node",
+    "Npm",
+    "Babel"
+  ],
+  "author": "Johnson T",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.17.1",
+    "react": "^16.2.0",
+    "react-bootstrap": "^0.31.5",
+    "react-dom": "^16.2.0",
+    "react-router": "^4.2.0",
+    "react-router-bootstrap": "^0.24.4",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "^1.0.17"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "webpack-dev-server": "^2.9.7"
+  }
+}
