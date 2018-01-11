@@ -19,7 +19,7 @@ export default class DynamicTableForm extends React.Component {
 
   render(){
 
-    const fields = this.props.fields.map((field, index) => <div key={index} className="form-group col-lg-3 col-sm-6 col-xs-12"><input ref={field} type="text" className="form-control" id={'form_field_'+field} placeholder={field}/></div>);
+    const fields = this.props.fields.map((field, index) => <div key={index} className="form-group col-lg-3 col-sm-6 col-xs-12"><input ref={field} type="text" value="" className="form-control" id={'form_field_'+field} placeholder={field}/></div>);
 
     return(
       <div className={this.props.showFrom ? "show" : "hide"}>
