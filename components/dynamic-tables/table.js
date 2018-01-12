@@ -88,7 +88,12 @@ export default class Table extends React.Component {
     const endpoint = this.state.showUpTo*(index+1);
     const initialpoint = endpoint-this.state.showUpTo;
     this.setState({initial: initialpoint, end: endpoint})
+  }
 
+  showNoOfRecords(selectedValue){
+    console.log("inside");
+    console.log(selectedValue);
+    this.setState({initial: 0, end: selectedValue, showUpTo: selectedValue})
   }
 
   render(){
@@ -97,6 +102,7 @@ export default class Table extends React.Component {
     const show = this.state.showFrom;
     const newForm = this.state.newForm;
     const tabelHead = columns.map((column,index) => <th key={index}>{column}</th>);
+    console.log(this.state.showUpTo);
     const tab = _.chunk(list, this.state.showUpTo);
     return(
       <div className="spaced spaced-bottom">
@@ -140,11 +146,11 @@ export default class Table extends React.Component {
               {/* show up to dropdown*/}
               <div className="col-lg-2 col-sm-3 col-xs-12 spaced">
                 <div className="dropdown">
-                  <button className="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Show<span className="caret"></span></button>
+                  <button className="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Show&nbsp;&nbsp;<span className="caret"></span></button>
                   <ul className="dropdown-menu" aria-labelledby="dropdownMenu1">
-                    <li><a href="#">10</a></li>
-                    <li><a href="#">20</a></li>
-                    <li><a href="#">30</a></li>
+                    <li><a href="javascript:void(0);" onClick={this.showNoOfRecords.bind(this, 10)}>10</a></li>
+                    <li><a href="javascript:void(0);" onClick={this.showNoOfRecords.bind(this, 30)}>30</a></li>
+                    <li><a href="javascript:void(0);" onClick={this.showNoOfRecords.bind(this, 50)}>50</a></li>
                   </ul>
                 </div>
               </div>
