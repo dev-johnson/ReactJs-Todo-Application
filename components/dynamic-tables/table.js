@@ -8,7 +8,7 @@ import * as _ from 'lodash';
 export default class Table extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {columns: [], list: [], showFrom: false, newForm: true, initial: 0, end: 10, showUpTo: 10 }
+    this.state = {columns: [], list: [], showFrom: false, newForm: true, totalPages:1, initial: 0, end: 10, showUpTo: 10 }
     this.getData = this.getData.bind(this);
   }
 
@@ -21,15 +21,15 @@ export default class Table extends React.Component {
     var rejected = self.props.rejected_cols
     axios.get(self.props.url)
     .then(function(response){
-      var data = response.data;
-      console.log(data.length)
+      console.log(response)
+      var data = response.data.records;
       var newColumns = [];
       for (let key in data[0]) {
         if(rejected.indexOf(key) === -1){
           newColumns.push(key)
         }
       }
-      self.setState({list: data, columns: newColumns})
+      self.setState({list: data, columns: newColumns, totalPages: response.data.paginationCount})
     });
   }
 
@@ -56,7 +56,6 @@ export default class Table extends React.Component {
     var selected = tempList[index]
     for (const field of this.state.columns) {
       var form_field = document.getElementById('form_field_'+field);
-      console.log(form_field.value)
       form_field.value = selected[field]
     }
     document.getElementById('selector_field').value = index;
@@ -91,8 +90,6 @@ export default class Table extends React.Component {
   }
 
   showNoOfRecords(selectedValue){
-    console.log("inside");
-    console.log(selectedValue);
     this.setState({initial: 0, end: selectedValue, showUpTo: selectedValue})
   }
 
@@ -102,8 +99,8 @@ export default class Table extends React.Component {
     const show = this.state.showFrom;
     const newForm = this.state.newForm;
     const tabelHead = columns.map((column,index) => <th key={index}>{column}</th>);
-    console.log(this.state.showUpTo);
-    const tab = _.chunk(list, this.state.showUpTo);
+    const tab = _.chunk(_.times(this.state.totalPages), this.state.showUpTo);
+    console.log(_.times(this.state.totalPages))
     return(
       <div className="spaced spaced-bottom">
 

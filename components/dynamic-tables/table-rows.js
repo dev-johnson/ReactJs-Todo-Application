@@ -13,7 +13,7 @@ export default class DynamicTableRows extends React.Component {
   }
   render(){
     const row = this.props.data;
-    const tableRow = this.props.columns.map((record, index) => <td key={index}>{row[record]}</td>);
+    const tableRow = this.props.columns.map((record, index) => <td key={index}>{row[record].toString()}</td>);
     return(
       <tr key={row.id}>
         { tableRow }

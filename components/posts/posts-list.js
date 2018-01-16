@@ -12,7 +12,7 @@ export default class PostTable extends React.Component {
           <h1 className=" clear-margin post-title">Posts Table</h1>
         </div>
         <div className="col-xs-12">
-          <Table url="https://jsonplaceholder.typicode.com/posts" rejected_cols="['userId', 'body']" />
+          <Table url="http://localhost:3000/api/AdminRewardPoints/all-rewards" rejected_cols="['userId', 'body']" />
         </div>
       </div>
     )
